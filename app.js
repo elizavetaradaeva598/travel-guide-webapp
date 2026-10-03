@@ -31,7 +31,7 @@ buttons.forEach(btn => {
     });
 });
 
-tg.MainButton.onClick(function () {
+tg.onEvent("mainButtonClicked", function () {
     console.log("Клик по MainButton, отправляю:", selectedCountry);  // <-- для отладки
     if (selectedCountry !== null) {
         tg.sendData(selectedCountry);
