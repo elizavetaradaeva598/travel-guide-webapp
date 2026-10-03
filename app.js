@@ -5,10 +5,11 @@ tg.expand();
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#2481cc";
 
+console.log("app.js загружен");  // <-- для отладки
+
 let selectedCountry = null;
 let selectedCountryName = "";
 
-// Находим все кнопки
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(btn => {
@@ -16,7 +17,6 @@ buttons.forEach(btn => {
         const countryId = this.getAttribute("data-id");
         const countryName = this.textContent.trim();
 
-        // Если это та же страна — прячем кнопку
         if (selectedCountry === countryId && tg.MainButton.isVisible) {
             tg.MainButton.hide();
             selectedCountry = null;
@@ -31,9 +31,9 @@ buttons.forEach(btn => {
     });
 });
 
-// Обработка нажатия главной кнопки
 tg.MainButton.onClick(function () {
+    console.log("Клик по MainButton, отправляю:", selectedCountry);  // <-- для отладки
     if (selectedCountry !== null) {
-        tg.sendData(selectedCountry);  // отправляем id страны в бота
+        tg.sendData(selectedCountry);
     }
 });
